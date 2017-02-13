@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4930A10FA01B824B19B6A5F843911BE0E090EFA1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4930A10FA01B824B19B6A5F843911BE0E090EFA1" : 9223372036854775807,
+    "1F1EFFB2C41DAD4AA6971AA236B276892483A661" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0014A293-1DBA-42C1-B3C8-C22506E2F1A1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4930A10FA01B824B19B6A5F843911BE0E090EFA1" : "JSON-From-File\/",
+    "1F1EFFB2C41DAD4AA6971AA236B276892483A661" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JSONFromFile",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "JSONFromFile.playground",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rsgc-ics4u-2016\/ProbabilityModelling.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1F1EFFB2C41DAD4AA6971AA236B276892483A661"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rsgc-ics3u-2015\/JSON-From-File.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4930A10FA01B824B19B6A5F843911BE0E090EFA1"
+    }
+  ]
+}
