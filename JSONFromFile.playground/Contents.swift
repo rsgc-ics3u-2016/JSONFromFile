@@ -22,8 +22,8 @@ import Foundation
 
 // getJSON
 //
-// Purpose: Open a JSON file included in the playground Resources folder and return the contents of the file as a String
-func getJSON(forResource resource : String, ofType type : String) -> String? {
+// Purpose: Open a JSON file included in the playground Resources folder and return the contents of the file as JSON data
+func getJSON(forResource resource : String, ofType type : String) -> Data? {
     
     
     // Obtain the path to file in the playground bundle
@@ -42,25 +42,87 @@ func getJSON(forResource resource : String, ofType type : String) -> String? {
         print("Could not read data from file.")
         return nil
     }
-    
-    // Convert the raw data to a string
-    guard let content = String(data: data, encoding: String.Encoding.utf8) else {
-        
-        // Early exit from function with error
-        print("Could not convert the raw data to a string")
-        return nil
-    }
 
-    // Return the JSON data as a String
-    return content
+    // Return the JSON data
+    return data
+    
+}
+
+// CoolingCentre
+//
+// Purpose: Store information we care about from the JSON file.
+struct CoolingCentre {
+    
+    // Properties... add more as needed based on your analysis of the JSON data
+    var address : String
+    
+}
+
+// parseJSON
+//
+// Purpose: Parse a String containing JSON data and return a Swift-native data structure containing relevant data
+func parse(_ JSON : Data) -> [CoolingCentre]? {
+    
+    // Create an empty array of the structure that will contain data about a cooling centre
+    var parsedData : [CoolingCentre] = []
+    
+    // Begin parsing the cooling centre data
+    // De-serializing JSON can throw errors, so should be inside a do-catch structure
+    do {
+        
+        // Get the raw list of JSON objects as an array of Any objects
+        let allCoolingCentres = try JSONSerialization.jsonObject(with: JSON, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
+        
+        // Now iterate over the list of Any objects and try to cast each object to a dictionary
+        for centre in allCoolingCentres {
+            
+            // Try to cast this cooling centre to a dictionary
+            guard let thisCentre = centre as? [String : Any] else {
+                
+                // Error, early exit
+                print("Could not cast Any object to a [String : Any] Dictionary.")
+                return nil
+            }
+            
+            // Try to cast the address from the JSON data into a String
+            guard let address = thisCentre["address"] as? String else {
+                
+                // Error, early exit
+                print("Could not obtain address information for current cooling centre.")
+                return nil
+            }
+
+            // TODO... Add additional lines to parse the rest of the cooling centre JSON data.
+            
+            // Now we have the information needed from the JSON object, so add to our list of parsed data
+            // TODO: You'll need to update the CoolingCentre struct and modify the line below.
+            parsedData.append(CoolingCentre(address: address))
+            
+        }
+        
+    } catch let error as NSError {
+        
+        // Print the error message
+        print("Failed to parse JSON: \(error.localizedDescription)")
+        return nil
+        
+    }
+    
+    // Return the array of cooling centre data
+    return parsedData
     
 }
 
 // Attempt to get the JSON data from the file
 if let json = getJSON(forResource: "ac-in-toronto", ofType: "json") {
     
-    // Now parse the JSON into Swift-native data structures... add your code below
-    print(json)
+    // Now parse the JSON into Swift-native data structures...
+    if let centres = parse(json) {
+        
+        // At this point, if this code were in a "full project" you could take the data and present it in a user interface
+        print(centres)
+        
+    }
     
 } else {
     
